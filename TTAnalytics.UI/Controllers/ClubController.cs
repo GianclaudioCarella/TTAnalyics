@@ -8,8 +8,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using TTAnalytics.Data;
 using TTAnalytics.Model;
-using TTAnalytics.Model.DAO;
 
 namespace TTAnalytics.UI.Controllers
 {

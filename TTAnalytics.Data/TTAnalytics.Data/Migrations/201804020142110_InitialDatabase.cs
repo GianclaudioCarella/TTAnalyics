@@ -1,14 +1,14 @@
-namespace TTAnalytics.Model.Migrations
+namespace TTAnalytics.Data.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class StartProject : DbMigration
+    public partial class InitialDatabase : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Clubs",
+                "dbo.Club",
                 c => new
                     {
                         ClubId = c.Int(nullable: false, identity: true),
@@ -18,7 +18,7 @@ namespace TTAnalytics.Model.Migrations
                 .PrimaryKey(t => t.ClubId);
             
             CreateTable(
-                "dbo.Equipaments",
+                "dbo.Equipament",
                 c => new
                     {
                         EquipamentId = c.Int(nullable: false, identity: true),
@@ -30,7 +30,7 @@ namespace TTAnalytics.Model.Migrations
                 .PrimaryKey(t => t.EquipamentId);
             
             CreateTable(
-                "dbo.Matches",
+                "dbo.Match",
                 c => new
                     {
                         MatchId = c.Int(nullable: false, identity: true),
@@ -38,11 +38,11 @@ namespace TTAnalytics.Model.Migrations
                         WinnerMatchId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.MatchId)
-                .ForeignKey("dbo.Tournaments", t => t.TournamentId, cascadeDelete: true)
+                .ForeignKey("dbo.Tournament", t => t.TournamentId, cascadeDelete: true)
                 .Index(t => t.TournamentId);
             
             CreateTable(
-                "dbo.Players",
+                "dbo.Player",
                 c => new
                     {
                         PlayerId = c.Int(nullable: false, identity: true),
@@ -57,13 +57,13 @@ namespace TTAnalytics.Model.Migrations
                         Set_SetId = c.Int(),
                     })
                 .PrimaryKey(t => t.PlayerId)
-                .ForeignKey("dbo.Matches", t => t.Match_MatchId)
-                .ForeignKey("dbo.Sets", t => t.Set_SetId)
+                .ForeignKey("dbo.Match", t => t.Match_MatchId)
+                .ForeignKey("dbo.Set", t => t.Set_SetId)
                 .Index(t => t.Match_MatchId)
                 .Index(t => t.Set_SetId);
             
             CreateTable(
-                "dbo.Tournaments",
+                "dbo.Tournament",
                 c => new
                     {
                         TournamentId = c.Int(nullable: false, identity: true),
@@ -76,11 +76,11 @@ namespace TTAnalytics.Model.Migrations
                         Player_PlayerId = c.Int(),
                     })
                 .PrimaryKey(t => t.TournamentId)
-                .ForeignKey("dbo.Players", t => t.Player_PlayerId)
+                .ForeignKey("dbo.Player", t => t.Player_PlayerId)
                 .Index(t => t.Player_PlayerId);
             
             CreateTable(
-                "dbo.Sets",
+                "dbo.Set",
                 c => new
                     {
                         SetId = c.Int(nullable: false, identity: true),
@@ -92,11 +92,11 @@ namespace TTAnalytics.Model.Migrations
                         Match_MatchId = c.Int(),
                     })
                 .PrimaryKey(t => t.SetId)
-                .ForeignKey("dbo.Matches", t => t.Match_MatchId)
+                .ForeignKey("dbo.Match", t => t.Match_MatchId)
                 .Index(t => t.Match_MatchId);
             
             CreateTable(
-                "dbo.Sponsors",
+                "dbo.Sponsor",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -111,23 +111,23 @@ namespace TTAnalytics.Model.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Sets", "Match_MatchId", "dbo.Matches");
-            DropForeignKey("dbo.Players", "Set_SetId", "dbo.Sets");
-            DropForeignKey("dbo.Players", "Match_MatchId", "dbo.Matches");
-            DropForeignKey("dbo.Tournaments", "Player_PlayerId", "dbo.Players");
-            DropForeignKey("dbo.Matches", "TournamentId", "dbo.Tournaments");
-            DropIndex("dbo.Sets", new[] { "Match_MatchId" });
-            DropIndex("dbo.Tournaments", new[] { "Player_PlayerId" });
-            DropIndex("dbo.Players", new[] { "Set_SetId" });
-            DropIndex("dbo.Players", new[] { "Match_MatchId" });
-            DropIndex("dbo.Matches", new[] { "TournamentId" });
-            DropTable("dbo.Sponsors");
-            DropTable("dbo.Sets");
-            DropTable("dbo.Tournaments");
-            DropTable("dbo.Players");
-            DropTable("dbo.Matches");
-            DropTable("dbo.Equipaments");
-            DropTable("dbo.Clubs");
+            DropForeignKey("dbo.Set", "Match_MatchId", "dbo.Match");
+            DropForeignKey("dbo.Player", "Set_SetId", "dbo.Set");
+            DropForeignKey("dbo.Player", "Match_MatchId", "dbo.Match");
+            DropForeignKey("dbo.Tournament", "Player_PlayerId", "dbo.Player");
+            DropForeignKey("dbo.Match", "TournamentId", "dbo.Tournament");
+            DropIndex("dbo.Set", new[] { "Match_MatchId" });
+            DropIndex("dbo.Tournament", new[] { "Player_PlayerId" });
+            DropIndex("dbo.Player", new[] { "Set_SetId" });
+            DropIndex("dbo.Player", new[] { "Match_MatchId" });
+            DropIndex("dbo.Match", new[] { "TournamentId" });
+            DropTable("dbo.Sponsor");
+            DropTable("dbo.Set");
+            DropTable("dbo.Tournament");
+            DropTable("dbo.Player");
+            DropTable("dbo.Match");
+            DropTable("dbo.Equipament");
+            DropTable("dbo.Club");
         }
     }
 }

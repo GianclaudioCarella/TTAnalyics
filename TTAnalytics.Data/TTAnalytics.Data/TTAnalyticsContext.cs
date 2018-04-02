@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using TTAnalytics.Model;
 
-namespace TTAnalytics.Model.DAO
+namespace TTAnalytics.Data
 {
     public class TTAnalyticsContext : DbContext
     {
@@ -17,5 +14,9 @@ namespace TTAnalytics.Model.DAO
         public DbSet<Sponsor> Sponsors { get; set; }
         public DbSet<Tournament> Tournaments { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
     }
 }

@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -126,12 +127,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TTAnalytics.Business\TTAnalytics.Business.csproj">
-      <Project>{8d352d4a-26e8-4c49-a2dd-3e388c3a884d}</Project>
-      <Name>TTAnalytics.Business</Name>
+    <ProjectReference Include="..\TTAnalytics.Data\TTAnalytics.Data\TTAnalytics.Data.csproj">
+      <Project>{5374E4FA-F137-4BC8-AC40-3B9BBD9731E7}</Project>
+      <Name>TTAnalytics.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\TTAnalytics.Model\TTAnalytics.Model.csproj">
       <Project>{5ae60af0-3d03-4071-be6f-f267b625c782}</Project>
