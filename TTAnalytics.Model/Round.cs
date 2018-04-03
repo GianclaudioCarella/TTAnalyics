@@ -1,9 +1,8 @@
 ﻿namespace TTAnalytics.Model
 {
-    public class Club
+    public class Round
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Country { get; set; }
     }
 }

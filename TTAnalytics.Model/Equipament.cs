@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TTAnalytics.Model
+﻿namespace TTAnalytics.Model
 {
+    // O que é essa classe?
     public class Equipament
     {
-        public int EquipamentId { get; set; }
+        public int Id { get; set; }
         public string Paddle { get; set; }
         public string FrontRubber { get; set; }
         public string BackRubber { get; set; }

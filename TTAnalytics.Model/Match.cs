@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TTAnalytics.Model
+﻿namespace TTAnalytics.Model
 {
     public class Match
     {
-        public int MatchId { get; set; }
-        public int TournamentId { get; set; }
+        public int Id { get; set; }
+        public Tournament Tournament { get; set; }
 
-        public virtual List<Player> PlayerId { get; set; }
+        public Player PlayerA { get; set; }
+        public Player PlayerB { get; set; }
 
-        public List<Set> Sets { get; set; }
+        public Player Winner { get; set; }
 
-        public int WinnerMatchId { get; set; }
-
-
-
+        public Round Round { get; set; }
     }
 }
