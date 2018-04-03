@@ -1,11 +1,11 @@
 using System.Web.Http;
 using WebActivatorEx;
-using TTAnalytics.UI;
+using TTAnalytics.API;
 using Swashbuckle.Application;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
-namespace TTAnalytics.UI
+namespace TTAnalytics.API
 {
     public class SwaggerConfig
     {
@@ -32,7 +32,7 @@ namespace TTAnalytics.UI
                         // hold additional metadata for an API. Version and title are required but you can also provide
                         // additional fields by chaining methods off SingleApiVersion.
                         //
-                        c.SingleApiVersion("v1", "TTAnalytics.UI");
+                        c.SingleApiVersion("v1", "TTAnalytics.API");
 
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.
                         //

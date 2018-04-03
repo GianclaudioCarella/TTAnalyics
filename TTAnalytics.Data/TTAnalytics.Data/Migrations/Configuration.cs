@@ -1,6 +1,11 @@
 namespace TTAnalytics.Data.Migrations
 {
+    using Newtonsoft.Json;
+    using System.Collections.Generic;
     using System.Data.Entity.Migrations;
+    using System.IO;
+    using System.Reflection;
+    using TTAnalytics.Model;
 
     internal sealed class Configuration : DbMigrationsConfiguration<TTAnalytics.Data.TTAnalyticsContext>
     {
@@ -11,10 +16,12 @@ namespace TTAnalytics.Data.Migrations
 
         protected override void Seed(TTAnalytics.Data.TTAnalyticsContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            var countriesPath = @"C:\_project\TTAnalytics\TTAnalytics.Data\TTAnalytics.Data\InitialSeed\Country.json";
+            List<Country> listCountries = JsonConvert.DeserializeObject<List<Country>>(File.ReadAllText(countriesPath));
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            context.Country.AddRange(listCountries);
+
+            context.SaveChanges();
         }
     }
 }

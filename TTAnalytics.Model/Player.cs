@@ -7,10 +7,10 @@ namespace TTAnalytics.Model
     {
         public int Id { get; private set; }
         public string FullName { get; set; }
-        public Country Country { get; set; }
+        public virtual Country Country { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Gender { get; set; }
-        public Club Club { get; set; }
+        public virtual Club Club { get; set; }
 
 
         // O que sao esses campos?

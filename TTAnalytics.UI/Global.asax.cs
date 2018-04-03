@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 using System.Web.Http;
-using System.Web.Routing;
+using TTAnalytics.Data;
 
-namespace TTAnalytics.UI
+namespace TTAnalytics.API
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+
+            TTAnalyticsContext db = new TTAnalyticsContext();
+            
+            var teste = db.Country.ToListAsync().Result;
+            var b = "";
         }
     }
 }

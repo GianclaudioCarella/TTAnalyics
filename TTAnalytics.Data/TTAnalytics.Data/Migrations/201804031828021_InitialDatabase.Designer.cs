@@ -13,7 +13,7 @@ namespace TTAnalytics.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201804020142110_InitialDatabase"; }
+            get { return "201804031828021_InitialDatabase"; }
         }
         
         string IMigrationMetadata.Source
