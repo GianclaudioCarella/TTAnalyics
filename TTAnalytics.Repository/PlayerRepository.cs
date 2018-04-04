@@ -41,7 +41,19 @@ namespace TTAnalytics.Repository
                 .FirstOrDefault();
         }
 
-
+        public ICollection<Player> GetByClub(int clubId)
+        {
+            return context.Players
+                .Where(p => p.Club.Id == clubId)
+                .Include(p => p.Club)
+                .Include(p => p.Country)
+                .Include(p => p.Grip)
+                .Include(p => p.Gender)
+                .Include(p => p.Handedness)
+                .Include(p => p.PlayingStyle)
+                .ToList();
+        }
+        
         public void Add(Player player)
         {
             context.Players.Add(player);
