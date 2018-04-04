@@ -48,7 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CountryRepository.cs" />
+    <Compile Include="GenderRepository.cs" />
+    <Compile Include="GripRepository.cs" />
+    <Compile Include="HandednessRepository.cs" />
     <Compile Include="PlayerRepository.cs" />
+    <Compile Include="PlayingStyleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

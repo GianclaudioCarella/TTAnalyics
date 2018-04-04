@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using TTAnalytics.Data;
 using TTAnalytics.Model;
@@ -17,12 +18,27 @@ namespace TTAnalytics.Repository
 
         public ICollection<Player> GetAll()
         {
-            return context.Players.ToList();
+            return context.Players
+                .Include(p => p.Club)
+                .Include(p => p.Country)
+                .Include(p => p.Grip)
+                .Include(p => p.Gender)
+                .Include(p => p.Handedness)
+                .Include(p => p.PlayingStyle)
+                .ToList();
         }
 
         public Player Get(int id)
         {
-            return context.Players.Where(p => p.Id == id).FirstOrDefault();
+            return context.Players
+                .Where(p => p.Id == id)
+                .Include(p => p.Club)
+                .Include(p => p.Country)
+                .Include(p => p.Grip)
+                .Include(p => p.Gender)
+                .Include(p => p.Handedness)
+                .Include(p => p.PlayingStyle)
+                .FirstOrDefault();
         }
 
 

@@ -18,6 +18,10 @@ namespace TTAnalytics.Data
         public DbSet<Tournament> Tournaments { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Venue> Venues { get; set; }
+        public DbSet<Grip> Grips { get; set; }
+        public DbSet<Gender> Genders { get; set; }
+        public DbSet<Handedness> Handedness { get; set; }
+        public DbSet<PlayingStyle> PlayingStyles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

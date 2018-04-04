@@ -41,7 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICountryRepository.cs" />
+    <Compile Include="IGenderRepository.cs" />
+    <Compile Include="IGripRepository.cs" />
+    <Compile Include="IHandednessRepository.cs" />
     <Compile Include="IPlayerRepository.cs" />
+    <Compile Include="IPlayingStyleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
