@@ -24,6 +24,11 @@ namespace TTAnalytics.Data.Migrations
             List<Country> listCountries = JsonConvert.DeserializeObject<List<Country>>(File.ReadAllText(countriesPath));
             context.Country.AddRange(listCountries);
 
+            // State
+            var statesPath = string.Format(@"{0}\InitialData\State.json", baseDir);
+            List<State> listStates = JsonConvert.DeserializeObject<List<State>>(File.ReadAllText(statesPath));
+            context.States.AddRange(listStates);
+
             // Gender
             var genderPath = string.Format(@"{0}\InitialData\Gender.json", baseDir);
             List<Gender> listGender = JsonConvert.DeserializeObject<List<Gender>>(File.ReadAllText(genderPath));

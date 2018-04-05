@@ -8,6 +8,7 @@ namespace TTAnalytics.Data
     {
         public DbSet<Club> Clubs { get; set; }
         public DbSet<Country> Country { get; set; }
+        public DbSet<State> States { get; set; }
         public DbSet<Equipament> Equipments { get; set; }
         public DbSet<Match> Matches { get; set; }
         public DbSet<Organizer> Organizers { get; set; }

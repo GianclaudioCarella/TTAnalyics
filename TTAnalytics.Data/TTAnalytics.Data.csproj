@@ -50,13 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201804040046520_InitialDatabase.cs" />
-    <Compile Include="Migrations\201804040046520_InitialDatabase.Designer.cs">
-      <DependentUpon>201804040046520_InitialDatabase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804041623046_SecondMigration.cs" />
-    <Compile Include="Migrations\201804041623046_SecondMigration.Designer.cs">
-      <DependentUpon>201804041623046_SecondMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201804052246541_InitialDatabase.cs" />
+    <Compile Include="Migrations\201804052246541_InitialDatabase.Designer.cs">
+      <DependentUpon>201804052246541_InitialDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +65,7 @@
     <None Include="InitialData\Grip.json" />
     <None Include="InitialData\Handedness.json" />
     <None Include="InitialData\PlayingStyle.json" />
+    <None Include="InitialData\State.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -78,11 +75,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804040046520_InitialDatabase.resx">
-      <DependentUpon>201804040046520_InitialDatabase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804041623046_SecondMigration.resx">
-      <DependentUpon>201804041623046_SecondMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804052246541_InitialDatabase.resx">
+      <DependentUpon>201804052246541_InitialDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

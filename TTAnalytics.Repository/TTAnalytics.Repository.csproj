@@ -52,10 +52,13 @@
     <Compile Include="GenderRepository.cs" />
     <Compile Include="GripRepository.cs" />
     <Compile Include="HandednessRepository.cs" />
+    <Compile Include="OrganizerRepository.cs" />
     <Compile Include="PlayerRepository.cs" />
     <Compile Include="PlayingStyleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StateRepository.cs" />
     <Compile Include="UserRepository.cs" />
+    <Compile Include="VenueRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TTAnalytics.Data\TTAnalytics.Data.csproj">

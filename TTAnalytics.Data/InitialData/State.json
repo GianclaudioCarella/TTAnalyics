@@ -1,0 +1,296 @@
+﻿[{
+	"ID": "1",
+	"Abbreviation": "AC",
+	"Name": "Acre",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "2",
+	"Abbreviation": "AL",
+	"Name": "Alagoas",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "3",
+	"Abbreviation": "AM",
+	"Name": "Amazonas",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "4",
+	"Abbreviation": "AP",
+	"Name": "Amapá",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "5",
+	"Abbreviation": "BA",
+	"Name": "Bahia",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "6",
+	"Abbreviation": "CE",
+	"Name": "Ceará",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "7",
+	"Abbreviation": "DF",
+	"Name": "Distrito Federal",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "8",
+	"Abbreviation": "ES",
+	"Name": "Espírito Santo",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "9",
+	"Abbreviation": "GO",
+	"Name": "Goiás",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "10",
+	"Abbreviation": "MA",
+	"Name": "Maranhão",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "11",
+	"Abbreviation": "MG",
+	"Name": "Minas Gerais",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "12",
+	"Abbreviation": "MS",
+	"Name": "Mato Grosso do Sul",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "13",
+	"Abbreviation": "MT",
+	"Name": "Mato Grosso",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "14",
+	"Abbreviation": "PA",
+	"Name": "Pará",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+  {
+    "ID": "15",
+    "Abbreviation": "PB",
+    "Name": "Paraíba",
+    "Country": {
+      "Id": 30,
+      "Name": "Brazil",
+      "Abbreviation": "BR"
+    }
+  },
+     {
+	"ID": "16",
+	"Abbreviation": "PE",
+	"Name": "Pernambuco",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "17",
+	"Abbreviation": "PI",
+	"Name": "Piauí",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "18",
+	"Abbreviation": "PR",
+	"Name": "Paraná",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "19",
+	"Abbreviation": "RJ",
+	"Name": "Rio de Janeiro",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "20",
+	"Abbreviation": "RN",
+	"Name": "Rio Grande do Norte",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "21",
+	"Abbreviation": "RO",
+	"Name": "Rondônia",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "22",
+	"Abbreviation": "RR",
+	"Name": "Roraima",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "23",
+	"Abbreviation": "RS",
+	"Name": "Rio Grande do Sul",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "24",
+	"Abbreviation": "SC",
+	"Name": "Santa Catarina",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "25",
+	"Abbreviation": "SE",
+	"Name": "Sergipe",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "26",
+	"Abbreviation": "SP",
+	"Name": "São Paulo",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+},
+     {
+	"ID": "27",
+	"Abbreviation": "TO",
+	"Name": "Tocantins",
+	"Country":
+	{
+   		"Id": 30,
+		"Name": "Brazil",
+		"Abbreviation": "BR"
+	}
+}]

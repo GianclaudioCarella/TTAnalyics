@@ -9,79 +9,80 @@ using TTAnalytics.RepositoryInterface;
 
 namespace TTAnalytics.API.Controllers
 {
-    public class GripController : ApiController
+    public class VenueController : ApiController
     {
-        private IGripRepository gripRepository;
+        private IVenueRepository venueRepository;
 
-        public GripController()
+        public VenueController()
         {
-            gripRepository = new GripRepository(new TTAnalyticsContext());
+            venueRepository = new VenueRepository(new TTAnalyticsContext());
         }
 
-        public GripController(IGripRepository gripRepository)
+        public VenueController(IVenueRepository venueRepository)
         {
-            this.gripRepository = gripRepository;
+            this.venueRepository = venueRepository;
         }
 
         /// <summary>
-        /// Get List of All Grips
+        /// Get List of All Venues
         /// </summary>
         /// <returns></returns>
-        [SwaggerOperation("Get List of All Grips")]
-        [ResponseType(typeof(ICollection<Grip>))]
+        [SwaggerOperation("Get List of All Venues")]
+        [ResponseType(typeof(ICollection<Venue>))]
         public IHttpActionResult Get()
         {
-            return Ok(gripRepository.GetAll());
+            return Ok(venueRepository.GetAll());
         }
 
         /// <summary>
-        /// Get Specific Grip by Id
+        /// Get Specific Venue by Id
         /// </summary>
         /// <returns></returns>
-        [SwaggerOperation("Get Specific Grip by Id")]
-        [ResponseType(typeof(Grip))]
+        [SwaggerOperation("Get Specific Venue by Id")]
+        [ResponseType(typeof(Venue))]
         public IHttpActionResult Get(int id)
         {
-            return Ok(gripRepository.Get(id));
+            return Ok(venueRepository.Get(id));
         }
 
         /// <summary>
-        /// Add New Grip
+        /// Add New Venue
         /// </summary>
         /// <returns></returns>
-        [SwaggerOperation("Add New Grip")]
+        [SwaggerOperation("Add New Venue")]
         [ResponseType(typeof(void))]
-        public void Post([FromBody]Grip grip)
+        public void Post([FromBody]Venue venue)
         {
             if (ModelState.IsValid)
             {
-                gripRepository.Add(grip);
+                venueRepository.Add(venue);
             }
         }
 
         /// <summary>
-        /// Edit Grip
+        /// Edit Venue
         /// </summary>
         /// <returns></returns>
-        [SwaggerOperation("Edit Grip")]
+        [SwaggerOperation("Edit Venue")]
         [ResponseType(typeof(void))]
-        public void Put([FromBody]Grip grip)
+        public void Put([FromBody]Venue venue)
         {
             if (ModelState.IsValid)
             {
-                gripRepository.Update(grip);
+                venueRepository.Update(venue);
             }
         }
 
         /// <summary>
-        /// Delete Grip
+        /// Delete Venue
         /// </summary>
         /// <returns></returns>
-        [SwaggerOperation("Delete Grip")]
+        [SwaggerOperation("Delete Venue")]
         [ResponseType(typeof(void))]
         public void Delete(int id)
         {
-            gripRepository.Delete(id);
+            venueRepository.Delete(id);
         }
+
     }
 }
