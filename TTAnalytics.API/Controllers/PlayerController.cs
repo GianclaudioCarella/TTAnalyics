@@ -9,15 +9,25 @@ using TTAnalytics.RepositoryInterface;
 
 namespace TTAnalytics.API.Controllers
 {
+    /// <summary>
+    /// PlayerController
+    /// </summary>
     public class PlayerController : ApiController
     {
         private IPlayerRepository playerRepository;
 
+        /// <summary>
+        /// PlayerController
+        /// </summary>
         public PlayerController()
         {
             playerRepository = new PlayerRepository(new TTAnalyticsContext());
         }
 
+        /// <summary>
+        /// PlayerController
+        /// </summary>
+        /// <param name="playerRepository"></param>
         public PlayerController(IPlayerRepository playerRepository)
         {
             this.playerRepository = playerRepository;

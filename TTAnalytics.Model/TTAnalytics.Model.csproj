@@ -49,14 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
     <Compile Include="Club.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="Enums\TypeSponsor.cs" />
-    <Compile Include="Equipament.cs" />
+    <Compile Include="Equipment.cs" />
     <Compile Include="Gender.cs" />
     <Compile Include="Grip.cs" />
     <Compile Include="Handedness.cs" />
     <Compile Include="Match.cs" />
+    <Compile Include="MatchSingles.cs" />
     <Compile Include="Organizer.cs" />
     <Compile Include="PlayingStyle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

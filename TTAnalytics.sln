@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E0DC1450-3BF9-4418-8874-4B37345CF477}"
 	ProjectSection(SolutionItems) = preProject
 		instructions.md = instructions.md
+		Migration_Configuration.txt = Migration_Configuration.txt
 		todo.md = todo.md
 	EndProjectSection
 EndProject

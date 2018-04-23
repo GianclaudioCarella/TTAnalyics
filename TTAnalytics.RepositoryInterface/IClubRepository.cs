@@ -7,8 +7,8 @@ namespace TTAnalytics.RepositoryInterface
     {
         ICollection<Club> GetAll();
         Club Get(int id);
-        void Add(Club club);
-        void Update(Club club);
+        Club Add(Club club);
+        Club Update(Club club);
         void Delete(int id);
     }
 }

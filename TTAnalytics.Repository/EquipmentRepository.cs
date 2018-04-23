@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using TTAnalytics.Data;
 using TTAnalytics.Model;
@@ -7,54 +6,52 @@ using TTAnalytics.RepositoryInterface;
 
 namespace TTAnalytics.Repository
 {
-    public class ClubRepository : IClubRepository
+    public class EquipmentRepository : IEquipmentRepository
     {
         private TTAnalyticsContext context;
 
-        public ClubRepository(TTAnalyticsContext context)
+        public EquipmentRepository(TTAnalyticsContext context)
         {
             this.context = context;
         }
 
-        public ICollection<Club> GetAll()
+        public ICollection<Equipment> GetAll()
         {
-            return context.Clubs
-                .Include(c => c.Country)
+            return context.Equipments
                 .ToList();
         }
 
-        public Club Get(int id)
+        public Equipment Get(int id)
         {
-            return context.Clubs
+            return context.Equipments
                 .Where(p => p.Id == id)
-                .Include(c => c.Country)
                 .FirstOrDefault();
         }
 
 
-        public Club Add(Club club)
+        public Equipment Add(Equipment equipment)
         {
-            var result = context.Clubs.Add(club);
+            var result = context.Equipments.Add(equipment);
 
             Save();
 
             return result;
         }
 
-        public Club Update(Club club)
+        public Equipment Update(Equipment equipment)
         {
-            context.Entry(club).State = System.Data.Entity.EntityState.Modified;
+            context.Entry(equipment).State = System.Data.Entity.EntityState.Modified;
 
             Save();
 
-            return club;
+            return equipment;
         }
 
 
         public void Delete(int id)
         {
-            Club club = context.Clubs.Find(id);
-            context.Clubs.Remove(club);
+            Equipment equipment = context.Equipments.Find(id);
+            context.Equipments.Remove(equipment);
 
             Save();
         }
@@ -63,5 +60,6 @@ namespace TTAnalytics.Repository
         {
             context.SaveChanges();
         }
+
     }
 }

@@ -7,8 +7,8 @@ namespace TTAnalytics.RepositoryInterface
     {
         ICollection<User> GetAll();
         User Get(int id);
-        void Add(User user);
-        void Update(User user);
+        User Add(User user);
+        User Update(User user);
         void Delete(int id);
     }
 }

@@ -26,18 +26,22 @@ namespace TTAnalytics.Repository
         }
 
 
-        public void Add(User user)
+        public User Add(User user)
         {
-            context.Users.Add(user);
+            var result = context.Users.Add(user);
 
             Save();
+
+            return result;
         }
 
-        public void Update(User user)
+        public User Update(User user)
         {
             context.Entry(user).State = System.Data.Entity.EntityState.Modified;
 
             Save();
+
+            return user;
         }
 
 

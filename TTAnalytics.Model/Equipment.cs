@@ -1,7 +1,7 @@
 ﻿namespace TTAnalytics.Model
 {
     // O que é essa classe?
-    public class Equipament
+    public class Equipment
     {
         public int Id { get; set; }
         public string Paddle { get; set; }

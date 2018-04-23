@@ -9,15 +9,26 @@ using TTAnalytics.RepositoryInterface;
 
 namespace TTAnalytics.API.Controllers
 {
+    /// <summary>
+    /// CountryController
+    /// </summary>
+    [RoutePrefix("api/country")]
     public class CountryController : ApiController
     {
         private ICountryRepository countryRepository;
 
+        /// <summary>
+        /// CountryController
+        /// </summary>
         public CountryController()
         {
             countryRepository = new CountryRepository(new TTAnalyticsContext());
         }
 
+        /// <summary>
+        /// CountryController
+        /// </summary>
+        /// <param name="countryRepository"></param>
         public CountryController(ICountryRepository countryRepository)
         {
             this.countryRepository = countryRepository;

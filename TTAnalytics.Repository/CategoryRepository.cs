@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using TTAnalytics.Data;
 using TTAnalytics.Model;
@@ -7,54 +6,52 @@ using TTAnalytics.RepositoryInterface;
 
 namespace TTAnalytics.Repository
 {
-    public class ClubRepository : IClubRepository
+    public class CategoryRepository : ICategoryRepository
     {
         private TTAnalyticsContext context;
 
-        public ClubRepository(TTAnalyticsContext context)
+        public CategoryRepository(TTAnalyticsContext context)
         {
             this.context = context;
         }
 
-        public ICollection<Club> GetAll()
+        public ICollection<Category> GetAll()
         {
-            return context.Clubs
-                .Include(c => c.Country)
+            return context.Categories
                 .ToList();
         }
 
-        public Club Get(int id)
+        public Category Get(int id)
         {
-            return context.Clubs
+            return context.Categories
                 .Where(p => p.Id == id)
-                .Include(c => c.Country)
                 .FirstOrDefault();
         }
 
 
-        public Club Add(Club club)
+        public Category Add(Category category)
         {
-            var result = context.Clubs.Add(club);
+            var result = context.Categories.Add(category);
 
             Save();
 
             return result;
         }
 
-        public Club Update(Club club)
+        public Category Update(Category category)
         {
-            context.Entry(club).State = System.Data.Entity.EntityState.Modified;
+            context.Entry(category).State = System.Data.Entity.EntityState.Modified;
 
             Save();
 
-            return club;
+            return category;
         }
 
 
         public void Delete(int id)
         {
-            Club club = context.Clubs.Find(id);
-            context.Clubs.Remove(club);
+            Category category = context.Categories.Find(id);
+            context.Categories.Remove(category);
 
             Save();
         }

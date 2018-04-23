@@ -54,18 +54,22 @@ namespace TTAnalytics.Repository
                 .ToList();
         }
         
-        public void Add(Player player)
+        public Player Add(Player player)
         {
-            context.Players.Add(player);
+            var result = context.Players.Add(player);
 
             Save();
+
+            return result;
         }
 
-        public void Update(Player player)
+        public Player Update(Player player)
         {
             context.Entry(player).State = System.Data.Entity.EntityState.Modified;
 
             Save();
+
+            return player;
         }
 
 

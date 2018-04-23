@@ -4,12 +4,8 @@
     {
         public int Id { get; set; }
         public Tournament Tournament { get; set; }
-
-        public Player PlayerA { get; set; }
-        public Player PlayerB { get; set; }
-
-        public Player Winner { get; set; }
-
+        public Category Category { get; set; }
         public Round Round { get; set; }
+        public int BestOf { get; set; }
     }
 }

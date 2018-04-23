@@ -8,8 +8,8 @@ namespace TTAnalytics.RepositoryInterface
         ICollection<Player> GetAll();
         Player Get(int id);
         ICollection<Player> GetByClub(int clubId);
-        void Add(Player player);
-        void Update(Player player);
+        Player Add(Player player);
+        Player Update(Player player);
         void Delete(int id);
     }
 }

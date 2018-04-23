@@ -9,15 +9,25 @@ using TTAnalytics.RepositoryInterface;
 
 namespace TTAnalytics.API.Controllers
 {
+    /// <summary>
+    /// StateController
+    /// </summary>
     public class StateController : ApiController
     {
         private IStateRepository stateRepository;
 
+        /// <summary>
+        /// StateController
+        /// </summary>
         public StateController()
         {
             stateRepository = new StateRepository(new TTAnalyticsContext());
         }
 
+        /// <summary>
+        /// StateController
+        /// </summary>
+        /// <param name="stateRepository"></param>
         public StateController(IStateRepository stateRepository)
         {
             this.stateRepository = stateRepository;

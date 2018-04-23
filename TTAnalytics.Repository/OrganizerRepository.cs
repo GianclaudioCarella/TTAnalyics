@@ -30,18 +30,22 @@ namespace TTAnalytics.Repository
         }
 
 
-        public void Add(Organizer organizer)
+        public Organizer Add(Organizer organizer)
         {
-            context.Organizers.Add(organizer);
+            var result = context.Organizers.Add(organizer);
 
             Save();
+
+            return result;
         }
 
-        public void Update(Organizer organizer)
+        public Organizer Update(Organizer organizer)
         {
             context.Entry(organizer).State = EntityState.Modified;
 
             Save();
+
+            return organizer;
         }
 
 

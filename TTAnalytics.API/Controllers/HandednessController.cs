@@ -9,15 +9,26 @@ using TTAnalytics.RepositoryInterface;
 
 namespace TTAnalytics.API.Controllers
 {
+    /// <summary>
+    /// HandednessController
+    /// </summary>
+    [RoutePrefix("api/handedness")]
     public class HandednessController : ApiController
     {
         private IHandednessRepository handednessRepository;
 
+        /// <summary>
+        /// HandednessController
+        /// </summary>
         public HandednessController()
         {
             handednessRepository = new HandednessRepository(new TTAnalyticsContext());
         }
 
+        /// <summary>
+        /// HandednessController
+        /// </summary>
+        /// <param name="handednessRepository"></param>
         public HandednessController(IHandednessRepository handednessRepository)
         {
             this.handednessRepository = handednessRepository;

@@ -7,8 +7,8 @@ namespace TTAnalytics.RepositoryInterface
     {
         ICollection<PlayingStyle> GetAll();
         PlayingStyle Get(int id);
-        void Add(PlayingStyle playingStyle);
-        void Update(PlayingStyle playingStyle);
+        PlayingStyle Add(PlayingStyle playingStyle);
+        PlayingStyle Update(PlayingStyle playingStyle);
         void Delete(int id);
     }
 }

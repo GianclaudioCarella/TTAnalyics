@@ -9,15 +9,26 @@ using TTAnalytics.RepositoryInterface;
 
 namespace TTAnalytics.API.Controllers
 {
+    /// <summary>
+    /// GenderController
+    /// </summary>
+    [RoutePrefix("api/gender")]
     public class GenderController : ApiController
     {
         private IGenderRepository genderRepository;
 
+        /// <summary>
+        /// GenderController
+        /// </summary>
         public GenderController()
         {
             genderRepository = new GenderRepository(new TTAnalyticsContext());
         }
 
+        /// <summary>
+        /// GenderController
+        /// </summary>
+        /// <param name="genderRepository"></param>
         public GenderController(IGenderRepository genderRepository)
         {
             this.genderRepository = genderRepository;

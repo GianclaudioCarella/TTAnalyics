@@ -13,15 +13,26 @@ using TTAnalytics.RepositoryInterface;
 
 namespace TTAnalytics.API.Controllers
 {
+    /// <summary>
+    /// OrganizerController
+    /// </summary>
+    [RoutePrefix("api/organizer")]
     public class OrganizerController : ApiController
     {
         private IOrganizerRepository organizerRepository;
 
+        /// <summary>
+        /// OrganizerController
+        /// </summary>
         public OrganizerController()
         {
             organizerRepository = new OrganizerRepository(new TTAnalyticsContext());
         }
 
+        /// <summary>
+        /// OrganizerController
+        /// </summary>
+        /// <param name="organizerRepository"></param>
         public OrganizerController(IOrganizerRepository organizerRepository)
         {
             this.organizerRepository = organizerRepository;

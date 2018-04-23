@@ -1,9 +1,5 @@
 ﻿using Swashbuckle.Swagger.Annotations;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TTAnalytics.Data;
@@ -13,15 +9,25 @@ using TTAnalytics.RepositoryInterface;
 
 namespace TTAnalytics.API.Controllers
 {
+    /// <summary>
+    /// PlayingStyleController
+    /// </summary>
     public class PlayingStyleController : ApiController
     {
         private IPlayingStyleRepository playingStyleRepository;
 
+        /// <summary>
+        /// PlayingStyleController
+        /// </summary>
         public PlayingStyleController()
         {
             playingStyleRepository = new PlayingStyleRepository(new TTAnalyticsContext());
         }
 
+        /// <summary>
+        /// PlayingStyleController
+        /// </summary>
+        /// <param name="playingStyleRepository"></param>
         public PlayingStyleController(IPlayingStyleRepository playingStyleRepository)
         {
             this.playingStyleRepository = playingStyleRepository;

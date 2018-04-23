@@ -7,8 +7,8 @@ namespace TTAnalytics.RepositoryInterface
     {
         ICollection<Organizer> GetAll();
         Organizer Get(int id);
-        void Add(Organizer organizer);
-        void Update(Organizer organizer);
+        Organizer Add(Organizer organizer);
+        Organizer Update(Organizer organizer);
         void Delete(int id);
     }
 }

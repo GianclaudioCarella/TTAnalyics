@@ -7,8 +7,8 @@ namespace TTAnalytics.RepositoryInterface
     {
         ICollection<Grip> GetAll();
         Grip Get(int id);
-        void Add(Grip grip);
-        void Update(Grip grip);
+        Grip Add(Grip grip);
+        Grip Update(Grip grip);
         void Delete(int id);
     }
 }

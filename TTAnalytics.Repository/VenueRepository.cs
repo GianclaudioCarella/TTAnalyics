@@ -32,18 +32,22 @@ namespace TTAnalytics.Repository
         }
 
 
-        public void Add(Venue venue)
+        public Venue Add(Venue venue)
         {
-            context.Venues.Add(venue);
+            var result = context.Venues.Add(venue);
 
             Save();
+
+            return result;
         }
 
-        public void Update(Venue venue)
+        public Venue Update(Venue venue)
         {
             context.Entry(venue).State = EntityState.Modified;
 
             Save();
+
+            return venue;
         }
 
 

@@ -7,8 +7,8 @@ namespace TTAnalytics.RepositoryInterface
     {
         ICollection<Handedness> GetAll();
         Handedness Get(int id);
-        void Add(Handedness handedness);
-        void Update(Handedness handedness);
+        Handedness Add(Handedness handedness);
+        Handedness Update(Handedness handedness);
         void Delete(int id);
     }
 }

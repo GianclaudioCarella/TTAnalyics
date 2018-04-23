@@ -29,18 +29,22 @@ namespace TTAnalytics.Repository
         }
 
 
-        public void Add(PlayingStyle playingStyle)
+        public PlayingStyle Add(PlayingStyle playingStyle)
         {
-            context.PlayingStyles.Add(playingStyle);
+            var result = context.PlayingStyles.Add(playingStyle);
 
             Save();
+
+            return result;
         }
 
-        public void Update(PlayingStyle playingStyle)
+        public PlayingStyle Update(PlayingStyle playingStyle)
         {
             context.Entry(playingStyle).State = System.Data.Entity.EntityState.Modified;
 
             Save();
+
+            return playingStyle;
         }
 
 

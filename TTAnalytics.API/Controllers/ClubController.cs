@@ -9,18 +9,29 @@ using TTAnalytics.RepositoryInterface;
 
 namespace TTAnalytics.API.Controllers
 {
+    /// <summary>
+    /// ClubController
+    /// </summary>
     [RoutePrefix("api/club")]
     public class ClubController : ApiController
     {
         private IClubRepository clubRepository;
         private IPlayerRepository playerRepository;
 
+        /// <summary>
+        /// ClubController
+        /// </summary>
         public ClubController()
         {
             clubRepository = new ClubRepository(new TTAnalyticsContext());
             playerRepository = new PlayerRepository(new TTAnalyticsContext());
         }
 
+        /// <summary>
+        /// ClubController
+        /// </summary>
+        /// <param name="clubRepository"></param>
+        /// <param name="playerRepository"></param>
         public ClubController(IClubRepository clubRepository, IPlayerRepository playerRepository)
         {
             this.clubRepository = clubRepository;
@@ -33,7 +44,6 @@ namespace TTAnalytics.API.Controllers
         /// <returns></returns>
         [SwaggerOperation("Get List of All Clubs")]
         [ResponseType(typeof(ICollection<Club>))]
-        [Route("")]
         public IHttpActionResult Get()
         {
             return Ok(clubRepository.GetAll());
@@ -69,7 +79,6 @@ namespace TTAnalytics.API.Controllers
         /// <returns></returns>
         [SwaggerOperation("Add New Club")]
         [ResponseType(typeof(void))]
-        [Route("")]
         public void Post([FromBody]Club club)
         {
             if (ModelState.IsValid)
@@ -84,7 +93,6 @@ namespace TTAnalytics.API.Controllers
         /// <returns></returns>
         [SwaggerOperation("Edit Club")]
         [ResponseType(typeof(void))]
-        [Route("")]
         public void Put([FromBody]Club club)
         {
             if (ModelState.IsValid)
@@ -99,7 +107,6 @@ namespace TTAnalytics.API.Controllers
         /// <returns></returns>
         [SwaggerOperation("Delete Club")]
         [ResponseType(typeof(void))]
-        [Route("")]
         public void Delete(int id)
         {
             clubRepository.Delete(id);

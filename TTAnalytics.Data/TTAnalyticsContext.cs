@@ -6,11 +6,13 @@ namespace TTAnalytics.Data
 {
     public class TTAnalyticsContext : DbContext
     {
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Club> Clubs { get; set; }
         public DbSet<Country> Country { get; set; }
         public DbSet<State> States { get; set; }
-        public DbSet<Equipament> Equipments { get; set; }
+        public DbSet<Equipment> Equipments { get; set; }
         public DbSet<Match> Matches { get; set; }
+        public DbSet<MatchSingles> MatchesSingle { get; set; }
         public DbSet<Organizer> Organizers { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Round> Round { get; set; }

@@ -9,15 +9,26 @@ using TTAnalytics.RepositoryInterface;
 
 namespace TTAnalytics.API.Controllers
 {
+    /// <summary>
+    /// GripController
+    /// </summary>
+    [RoutePrefix("api/grip")]
     public class GripController : ApiController
     {
         private IGripRepository gripRepository;
 
+        /// <summary>
+        /// GripController
+        /// </summary>
         public GripController()
         {
             gripRepository = new GripRepository(new TTAnalyticsContext());
         }
 
+        /// <summary>
+        /// GripController
+        /// </summary>
+        /// <param name="gripRepository"></param>
         public GripController(IGripRepository gripRepository)
         {
             this.gripRepository = gripRepository;

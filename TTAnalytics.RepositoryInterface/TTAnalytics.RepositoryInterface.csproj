@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICategoryRepository.cs" />
     <Compile Include="IClubRepository.cs" />
     <Compile Include="ICountryRepository.cs" />
+    <Compile Include="IEquipmentRepository.cs" />
     <Compile Include="IGenderRepository.cs" />
     <Compile Include="IGripRepository.cs" />
     <Compile Include="IHandednessRepository.cs" />
@@ -49,6 +51,7 @@
     <Compile Include="IPlayerRepository.cs" />
     <Compile Include="IPlayingStyleRepository.cs" />
     <Compile Include="IStateRepository.cs" />
+    <Compile Include="ITournamentRepository.cs" />
     <Compile Include="IUserRepository.cs" />
     <Compile Include="IVenueRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

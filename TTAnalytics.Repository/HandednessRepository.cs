@@ -26,18 +26,22 @@ namespace TTAnalytics.Repository
         }
 
 
-        public void Add(Handedness handedness)
+        public Handedness Add(Handedness handedness)
         {
-            context.Handedness.Add(handedness);
+            var result = context.Handedness.Add(handedness);
 
             Save();
+
+            return result;
         }
 
-        public void Update(Handedness handedness)
+        public Handedness Update(Handedness handedness)
         {
             context.Entry(handedness).State = System.Data.Entity.EntityState.Modified;
 
             Save();
+
+            return handedness;
         }
 
 

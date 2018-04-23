@@ -26,18 +26,22 @@ namespace TTAnalytics.Repository
         }
 
 
-        public void Add(Grip grip)
+        public Grip Add(Grip grip)
         {
-            context.Grips.Add(grip);
+            var result = context.Grips.Add(grip);
 
             Save();
+
+            return result;
         }
 
-        public void Update(Grip grip)
+        public Grip Update(Grip grip)
         {
             context.Entry(grip).State = System.Data.Entity.EntityState.Modified;
 
             Save();
+
+            return grip;
         }
 
 
