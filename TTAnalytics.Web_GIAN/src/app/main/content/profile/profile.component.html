@@ -1,0 +1,145 @@
+<div id="profile" class="page-layout simple tabbed" fusePerfectScrollbar>
+
+    <!-- HEADER -->
+    <div class="header p-24" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+         fxLayoutAlign.gt-sm="space-between end">
+
+        <div class="user-info" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+             fxLayoutAlign.gt-sm="start center">
+            <img class="profile-image avatar huge" src="{{profile?.picture}}"
+                 *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+            <div class="name" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">{{profile.name}}
+            </div>
+        </div>
+
+        <div class="actions" fxLayout="row" fxLayoutAlign="end center" *fuseIfOnDom
+             [@animate]="{value:'*',params:{delay:'200ms'}}">
+            <button mat-raised-button color="accent" aria-label="Follow">Follow</button>
+            <button mat-raised-button color="primary" aria-label="Send Message">Send Message</button>
+        </div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <mat-tab-group dynamicHeight="true">
+
+            <mat-tab label="About">
+                <div id="about" class="p-24" fxLayout="row wrap">
+
+                    <div class="about-content" fxLayout="column" fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-md="100">
+                
+                        <div class="profile-box info-box general" fxLayout="column">
+                
+                            <header class="mat-accent-bg">
+                                <div class="title">General Information</div>
+                            </header>
+                
+                            <div class="content">
+                                <div class="info-line">
+                                    <div class="title">Gender</div>
+                                    <div class="info">{{profile.gender}}</div>
+                                </div>
+                
+                                <div class="info-line">
+                                    <div class="title">Birthday</div>
+                                    <div class="info">17/06/1986</div>
+                                </div>
+                
+                                <div class="info-line">
+                                    <div class="title">Locations</div>
+                                    <div class="info location" fxLayout="row" fxLayoutAlign="start center"
+                                         *ngFor="let location of profile.locations">
+                                        <span>{{location}}</span>
+                                        <mat-icon class="s-16 ml-4">location_on</mat-icon>
+                                    </div>
+                                </div>
+                
+                                <div class="info-line">
+                                    <div class="title">About Me</div>
+                                    <div class="info">{{profile.about}}</div>
+                                </div>
+                            </div>
+                
+                        </div>
+                
+                        <div class="profile-box info-box work" fxLayout="column">
+                
+                            <header class="mat-accent-bg">
+                                <div class="title">Work</div>
+                            </header>
+                
+                            <div class="content">
+                                <div class="info-line">
+                                    <div class="title">Occupation</div>
+                                    <div class="info">Developer</div>
+                                </div>
+                
+                                <div class="info-line">
+                                    <div class="title">Skills</div>
+                                    <div class="info">Developer</div>
+                                </div>
+                
+                                <div class="info-line">
+                                    <div class="title">Jobs</div>
+                                    <!-- <table class="info jobs">
+                                        <tr class="job" *ngFor="let job of about.work.jobs">
+                                            <td class="company">{{job.company}}</td>
+                                            <td class="date">{{job.date}}</td>
+                                        </tr>
+                                    </table> -->
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="profile-box info-box contact" fxLayout="column">
+                
+                            <header class="mat-accent-bg">
+                                <div class="title">Contact</div>
+                            </header>
+                
+                            <div class="content">
+                                <div class="info-line">
+                                    <div class="title">Address</div>
+                                    <div class="info">Ut pharetra luctus est quis sodales. Duis nisi tortor, bibendum eget tincidunt, aliquam ac elit. Mauris nec euismod odio.</div>
+                                </div>
+                                <div class="info-line">
+                                    <div class="title">Tel.</div>
+                                    <span>+6 555 6600</span>
+                                    <!-- <div class="info" *ngFor="let tel of about.contact.tel">
+                                        <span>+6 555 6600</span>
+                                    </div> -->
+                                </div>
+                                <div class="info-line">
+                                    <div class="title">Website</div>
+                                    <span>withinpixels.com</span>
+                                    <!-- <div class="info" *ngFor="let website of about.contact.websites">
+                                        <span>withinpixels.com</span>
+                                    </div> -->
+                                </div>
+                                <div class="info-line">
+                                    <div class="title">Emails</div>
+                                    <span>mail@withinpixels.com</span>
+                                    <!-- <div class="info" *ngFor="let email of about.contact.emails">
+                                        <span>mail@withinpixels.com</span>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </mat-tab>
+
+            <mat-tab label="Photos & Videos">
+                <!-- <fuse-profile-photos-videos></fuse-profile-photos-videos> -->
+            </mat-tab>
+
+        </mat-tab-group>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>
