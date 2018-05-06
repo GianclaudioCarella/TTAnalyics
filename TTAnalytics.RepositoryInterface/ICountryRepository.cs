@@ -6,5 +6,6 @@ namespace TTAnalytics.RepositoryInterface
     public interface ICountryRepository
     {
         ICollection<Country> GetAll();
+        Country Get(int id);
     }
 }

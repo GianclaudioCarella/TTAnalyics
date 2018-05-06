@@ -42,7 +42,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(ICollection<Handedness>))]
         public IHttpActionResult Get()
         {
-            return Ok(handednessRepository.GetAll());
+            return Json(handednessRepository.GetAll());
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(Handedness))]
         public IHttpActionResult Get(int id)
         {
-            return Ok(handednessRepository.Get(id));
+            return Json(handednessRepository.Get(id));
         }
 
         /// <summary>
@@ -61,13 +61,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Add New Handedness")]
-        [ResponseType(typeof(void))]
-        public void Post([FromBody]Handedness handedness)
+        [ResponseType(typeof(Handedness))]
+        public IHttpActionResult Post([FromBody]Handedness handedness)
         {
+            var result = new Handedness();
+
             if (ModelState.IsValid)
             {
-                handednessRepository.Add(handedness);
+                result = handednessRepository.Add(handedness);
             }
+
+            return Json(result);
         }
 
         /// <summary>
@@ -75,13 +79,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Edit Handedness")]
-        [ResponseType(typeof(void))]
-        public void Put([FromBody]Handedness handedness)
+        [ResponseType(typeof(Handedness))]
+        public IHttpActionResult Put([FromBody]Handedness handedness)
         {
+            var result = new Handedness();
+
             if (ModelState.IsValid)
             {
-                handednessRepository.Update(handedness);
+                result = handednessRepository.Update(handedness);
             }
+
+            return Json(result);
         }
 
         /// <summary>

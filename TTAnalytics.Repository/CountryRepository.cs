@@ -19,5 +19,10 @@ namespace TTAnalytics.Repository
         {
             return context.Country.ToList();
         }
+
+        public Country Get(int id)
+        {
+            return context.Country.Where(c => c.Id == id).FirstOrDefault();
+        }
     }
 }

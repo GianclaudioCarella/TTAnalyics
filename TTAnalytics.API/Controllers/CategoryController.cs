@@ -42,7 +42,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(ICollection<Category>))]
         public IHttpActionResult Get()
         {
-            return Ok(categoryRepository.GetAll());
+            return Json(categoryRepository.GetAll());
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace TTAnalytics.API.Controllers
         [Route("{id:int}")]
         public IHttpActionResult Get(int id)
         {
-            return Ok(categoryRepository.Get(id));
+            return Json(categoryRepository.Get(id));
         }
 
         /// <summary>
@@ -62,13 +62,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Add New Category")]
-        [ResponseType(typeof(void))]
-        public void Post([FromBody]Category category)
+        [ResponseType(typeof(Category))]
+        public IHttpActionResult Post([FromBody]Category category)
         {
+            var result = new Category();
+
             if (ModelState.IsValid)
             {
                 categoryRepository.Add(category);
             }
+
+            return Json(result);
         }
 
         /// <summary>
@@ -76,13 +80,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Edit Category")]
-        [ResponseType(typeof(void))]
-        public void Put([FromBody]Category category)
+        [ResponseType(typeof(Category))]
+        public IHttpActionResult Put([FromBody]Category category)
         {
+            var result = new Category();
+
             if (ModelState.IsValid)
             {
-                categoryRepository.Update(category);
+                result = categoryRepository.Update(category);
             }
+
+            return Json(result);
         }
 
         /// <summary>

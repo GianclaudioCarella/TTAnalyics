@@ -31,7 +31,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(ICollection<User>))]
         public IHttpActionResult Get()
         {
-            return Ok(userRepository.GetAll());
+            return Json(userRepository.GetAll());
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(User))]
         public IHttpActionResult Get(int id)
         {
-            return Ok(userRepository.Get(id));
+            return Json(userRepository.Get(id));
         }
 
         /// <summary>
@@ -50,13 +50,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Add New User")]
-        [ResponseType(typeof(void))]
-        public void Post([FromBody]User user)
+        [ResponseType(typeof(User))]
+        public IHttpActionResult Post([FromBody]User user)
         {
+            var result = new User();
+
             if (ModelState.IsValid)
             {
-                userRepository.Add(user);
+                result = userRepository.Add(user);
             }
+
+            return Json(result);
         }
 
         /// <summary>
@@ -64,13 +68,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Edit User")]
-        [ResponseType(typeof(void))]
-        public void Put([FromBody]User user)
+        [ResponseType(typeof(User))]
+        public IHttpActionResult Put([FromBody]User user)
         {
+            var result = new User();
+
             if (ModelState.IsValid)
             {
-                userRepository.Update(user);
+                result = userRepository.Update(user);
             }
+
+            return Json(result);
         }
 
         /// <summary>

@@ -41,13 +41,20 @@ namespace TTAnalytics.Repository
                 .FirstOrDefault();
         }
 
+        public ICollection<Category> GetCategories(int id)
+        {
+            return context.Tournaments
+                .Where(t => t.Id == id)
+                .SelectMany(t => t.Categories)
+                .ToList();
+        }
 
         public Tournament Add(Tournament tournament)
         {
             Organizer organizer;
             if (tournament.Organizer == null)
             {
-                organizer = organizerRepository.Add(tournament.Organizer); 
+                organizer = organizerRepository.Add(tournament.Organizer);
             }
             else
             {
@@ -93,6 +100,21 @@ namespace TTAnalytics.Repository
             return result;
         }
 
+        public Category AddCategory(int tournamentId, Category category)
+        {
+            var tournamentCategory = categoryRepository.Get(category.Id);
+
+            if (tournamentCategory == null)
+            {
+                tournamentCategory = categoryRepository.Add(category);
+            }
+
+            var tournament = Get(tournamentId);
+            tournament.Categories.Add(tournamentCategory);
+
+            return tournamentCategory;
+        }
+
         public Tournament Update(Tournament tournament)
         {
             context.Entry(tournament).State = EntityState.Modified;
@@ -101,7 +123,7 @@ namespace TTAnalytics.Repository
 
             return tournament;
         }
-        
+
         public void Delete(int id)
         {
             Tournament tournament = context.Tournaments.Find(id);

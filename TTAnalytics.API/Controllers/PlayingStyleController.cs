@@ -41,7 +41,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(ICollection<PlayingStyle>))]
         public IHttpActionResult Get()
         {
-            return Ok(playingStyleRepository.GetAll());
+            return Json(playingStyleRepository.GetAll());
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(Handedness))]
         public IHttpActionResult Get(int id)
         {
-            return Ok(playingStyleRepository.Get(id));
+            return Json(playingStyleRepository.Get(id));
         }
 
         /// <summary>
@@ -60,13 +60,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Add New Playing Style")]
-        [ResponseType(typeof(void))]
-        public void Post([FromBody]PlayingStyle playingStyle)
+        [ResponseType(typeof(PlayingStyle))]
+        public IHttpActionResult Post([FromBody]PlayingStyle playingStyle)
         {
+            var result = new PlayingStyle();
+
             if (ModelState.IsValid)
             {
-                playingStyleRepository.Add(playingStyle);
+                result = playingStyleRepository.Add(playingStyle);
             }
+
+            return Json(result);
         }
 
         /// <summary>
@@ -74,13 +78,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Edit Playing Style")]
-        [ResponseType(typeof(void))]
-        public void Put([FromBody]PlayingStyle playingStyle)
+        [ResponseType(typeof(PlayingStyle))]
+        public IHttpActionResult Put([FromBody]PlayingStyle playingStyle)
         {
+            var result = new PlayingStyle();
+
             if (ModelState.IsValid)
             {
-                playingStyleRepository.Update(playingStyle);
+                result = playingStyleRepository.Update(playingStyle);
             }
+
+            return Json(result);
         }
 
         /// <summary>

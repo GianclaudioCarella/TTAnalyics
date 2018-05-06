@@ -42,7 +42,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(ICollection<Grip>))]
         public IHttpActionResult Get()
         {
-            return Ok(gripRepository.GetAll());
+            return Json(gripRepository.GetAll());
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(Grip))]
         public IHttpActionResult Get(int id)
         {
-            return Ok(gripRepository.Get(id));
+            return Json(gripRepository.Get(id));
         }
 
         /// <summary>
@@ -61,13 +61,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Add New Grip")]
-        [ResponseType(typeof(void))]
-        public void Post([FromBody]Grip grip)
+        [ResponseType(typeof(Grip))]
+        public IHttpActionResult Post([FromBody]Grip grip)
         {
+            var result = new Grip();
+
             if (ModelState.IsValid)
             {
-                gripRepository.Add(grip);
+                result = gripRepository.Add(grip);
             }
+
+            return Json(result);
         }
 
         /// <summary>
@@ -75,13 +79,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Edit Grip")]
-        [ResponseType(typeof(void))]
-        public void Put([FromBody]Grip grip)
+        [ResponseType(typeof(Grip))]
+        public IHttpActionResult Put([FromBody]Grip grip)
         {
+            var result = new Grip();
+
             if (ModelState.IsValid)
             {
-                gripRepository.Update(grip);
+                result = gripRepository.Update(grip);
             }
+
+            return Json(result);
         }
 
         /// <summary>

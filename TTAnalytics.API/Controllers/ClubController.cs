@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Net;
 using TTAnalytics.Data;
 using TTAnalytics.Model;
 using TTAnalytics.Repository;
@@ -46,7 +47,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(ICollection<Club>))]
         public IHttpActionResult Get()
         {
-            return Ok(clubRepository.GetAll());
+            return Json(clubRepository.GetAll());
         }
 
         /// <summary>
@@ -58,7 +59,7 @@ namespace TTAnalytics.API.Controllers
         [Route("{id:int}")]
         public IHttpActionResult Get(int id)
         {
-            return Ok(clubRepository.Get(id));
+            return Json(clubRepository.Get(id));
         }
 
         /// <summary>
@@ -70,7 +71,7 @@ namespace TTAnalytics.API.Controllers
         [Route("{id:int}/players")]
         public IHttpActionResult GetClubPlayers(int id)
         {
-            return Ok(playerRepository.GetByClub(id));
+            return Json(playerRepository.GetByClub(id));
         }
 
         /// <summary>
@@ -78,13 +79,27 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Add New Club")]
-        [ResponseType(typeof(void))]
-        public void Post([FromBody]Club club)
+        [ResponseType(typeof(Club))]
+        public IHttpActionResult Post([FromBody]Club club)
         {
+            var result = new Club();
+
             if (ModelState.IsValid)
             {
-                clubRepository.Add(club);
+                if (club.Country == null)
+                {
+                    return Content(HttpStatusCode.BadRequest, "Club is empty");
+                }
+
+                if (club.Country.Id == 0 || clubRepository.Get(club.Country.Id) == null)
+                {
+                    return Content(HttpStatusCode.NotFound, "Club not found");
+                }
+                
+                result = clubRepository.Add(club);
             }
+
+            return Json(result);
         }
 
         /// <summary>
@@ -92,13 +107,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Edit Club")]
-        [ResponseType(typeof(void))]
-        public void Put([FromBody]Club club)
+        [ResponseType(typeof(Club))]
+        public IHttpActionResult Put([FromBody]Club club)
         {
+            var result = new Club();
+
             if (ModelState.IsValid)
             {
-                clubRepository.Update(club);
+                club = clubRepository.Update(club);
             }
+
+            return Json(club);
         }
 
         /// <summary>

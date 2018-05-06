@@ -1,5 +1,6 @@
 ﻿using Swashbuckle.Swagger.Annotations;
 using System.Collections.Generic;
+using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TTAnalytics.Data;
@@ -51,7 +52,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(ICollection<Tournament>))]
         public IHttpActionResult Get()
         {
-            return Ok(tournamentRepository.GetAll());
+            return Json(tournamentRepository.GetAll());
         }
 
         /// <summary>
@@ -63,7 +64,7 @@ namespace TTAnalytics.API.Controllers
         [Route("{id:int}")]
         public IHttpActionResult Get(int id)
         {
-            return Ok(tournamentRepository.Get(id));
+            return Json(tournamentRepository.Get(id));
         }
 
         /// <summary>
@@ -71,13 +72,76 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Add New Tournament")]
-        [ResponseType(typeof(void))]
-        public void Post([FromBody]Tournament tournament)
+        [ResponseType(typeof(Tournament))]
+        public IHttpActionResult Post([FromBody]Tournament tournament)
         {
+            var result = new Tournament();
+
             if (ModelState.IsValid)
             {
-                tournamentRepository.Add(tournament);
+                if (tournament.Organizer == null)
+                {
+                    return Content(HttpStatusCode.BadRequest, "Organizer is empty");
+                }
+
+                if (tournament.Organizer.Id == 0 || organizerRepository.Get(tournament.Organizer.Id) == null)
+                {
+                    return Content(HttpStatusCode.NotFound, "Organizer not found");
+                }
+
+                if (tournament.Venue == null)
+                {
+                    return Content(HttpStatusCode.BadRequest, "Venue is empty");
+                }
+
+                if (tournament.Venue.Id == 0 || venueRepository.Get(tournament.Venue.Id) == null)
+                {
+                    return Content(HttpStatusCode.NotFound, "Venue not found");
+                }
+
+                result = tournamentRepository.Add(tournament);
             }
+
+            return Json(result);
+        }
+
+        /// <summary>
+        /// Create a new Category into the Tournament
+        /// </summary>
+        /// <param name="tournamentId"></param>
+        /// <param name="categories"></param>
+        /// <returns></returns>
+        [SwaggerOperation("Create a new Category into the Tournament")]
+        [ResponseType(typeof(Category))]
+        [Route("{id:int}/categories")]
+        [HttpPost]
+        public IHttpActionResult PostCategories(int tournamentId, [FromBody]ICollection<Category> categories)
+        {
+            var result = new List<Category>();
+
+            if (ModelState.IsValid)
+            {
+                foreach (Category category in categories)
+                {
+                    result.Add(tournamentRepository.AddCategory(tournamentId, category));
+                }
+            }
+
+            return Json(result);
+        }
+
+        /// <summary>
+        /// Get List of Tournament Categories
+        /// </summary>
+        /// <param name="tournamentId"></param>
+        /// <returns></returns>
+        [SwaggerOperation("Get List of Tournament Categories")]
+        [ResponseType(typeof(ICollection<Category>))]
+        [Route("{id:int}/categories")]
+        [HttpGet]
+        public IHttpActionResult GetCategories(int tournamentId)
+        {
+            return Json(tournamentRepository.GetCategories(tournamentId));
         }
 
         /// <summary>
@@ -85,13 +149,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Edit Tournament")]
-        [ResponseType(typeof(void))]
-        public void Put([FromBody]Tournament tournament)
+        [ResponseType(typeof(Tournament))]
+        public IHttpActionResult Put([FromBody]Tournament tournament)
         {
+            var result = new Tournament();
+
             if (ModelState.IsValid)
             {
-                tournamentRepository.Update(tournament);
+                result = tournamentRepository.Update(tournament);
             }
+
+            return Json(result);
         }
 
         /// <summary>
@@ -100,7 +168,6 @@ namespace TTAnalytics.API.Controllers
         /// <returns></returns>
         [SwaggerOperation("Delete Tournament")]
         [ResponseType(typeof(void))]
-        [Route("")]
         public void Delete(int id)
         {
             tournamentRepository.Delete(id);

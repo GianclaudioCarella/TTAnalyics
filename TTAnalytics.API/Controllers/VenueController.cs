@@ -13,11 +13,18 @@ namespace TTAnalytics.API.Controllers
     {
         private IVenueRepository venueRepository;
 
+        /// <summary>
+        /// VenueController
+        /// </summary>
         public VenueController()
         {
             venueRepository = new VenueRepository(new TTAnalyticsContext());
         }
 
+        /// <summary>
+        /// VenueController
+        /// </summary>
+        /// <param name="venueRepository"></param>
         public VenueController(IVenueRepository venueRepository)
         {
             this.venueRepository = venueRepository;
@@ -31,7 +38,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(ICollection<Venue>))]
         public IHttpActionResult Get()
         {
-            return Ok(venueRepository.GetAll());
+            return Json(venueRepository.GetAll());
         }
 
         /// <summary>
@@ -42,7 +49,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(Venue))]
         public IHttpActionResult Get(int id)
         {
-            return Ok(venueRepository.Get(id));
+            return Json(venueRepository.Get(id));
         }
 
         /// <summary>
@@ -50,13 +57,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Add New Venue")]
-        [ResponseType(typeof(void))]
-        public void Post([FromBody]Venue venue)
+        [ResponseType(typeof(Venue))]
+        public IHttpActionResult Post([FromBody]Venue venue)
         {
+            var result = new Venue();
+
             if (ModelState.IsValid)
             {
-                venueRepository.Add(venue);
+                result = venueRepository.Add(venue);
             }
+
+            return Json(result);
         }
 
         /// <summary>
@@ -64,13 +75,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Edit Venue")]
-        [ResponseType(typeof(void))]
-        public void Put([FromBody]Venue venue)
+        [ResponseType(typeof(Venue))]
+        public IHttpActionResult Put([FromBody]Venue venue)
         {
+            var result = new Venue();
+
             if (ModelState.IsValid)
             {
-                venueRepository.Update(venue);
+                result = venueRepository.Update(venue);
             }
+
+            return Json(result);
         }
 
         /// <summary>

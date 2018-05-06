@@ -42,7 +42,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(ICollection<Equipment>))]
         public IHttpActionResult Get()
         {
-            return Ok(equipmentRepository.GetAll());
+            return Json(equipmentRepository.GetAll());
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace TTAnalytics.API.Controllers
         [Route("{id:int}")]
         public IHttpActionResult Get(int id)
         {
-            return Ok(equipmentRepository.Get(id));
+            return Json(equipmentRepository.Get(id));
         }
 
         /// <summary>
@@ -62,13 +62,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Add New Equipment")]
-        [ResponseType(typeof(void))]
-        public void Post([FromBody]Equipment equipment)
+        [ResponseType(typeof(Equipment))]
+        public IHttpActionResult Post([FromBody]Equipment equipment)
         {
+            var result = new Equipment();
+
             if (ModelState.IsValid)
             {
-                equipmentRepository.Add(equipment);
+                result = equipmentRepository.Add(equipment);
             }
+
+            return Json(result);
         }
 
         /// <summary>
@@ -76,13 +80,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Edit Equipment")]
-        [ResponseType(typeof(void))]
-        public void Put([FromBody]Equipment equipment)
+        [ResponseType(typeof(Equipment))]
+        public IHttpActionResult Put([FromBody]Equipment equipment)
         {
+            var result = new Equipment();
+
             if (ModelState.IsValid)
             {
-                equipmentRepository.Update(equipment);
+                result = equipmentRepository.Update(equipment);
             }
+
+            return Json(result);
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using Swashbuckle.Swagger.Annotations;
 using System.Collections.Generic;
+using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TTAnalytics.Data;
@@ -41,7 +42,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(ICollection<Player>))]
         public IHttpActionResult Get()
         {
-            return Ok(playerRepository.GetAll());
+            return Json(playerRepository.GetAll());
         }
 
         /// <summary>
@@ -52,7 +53,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(Player))]
         public IHttpActionResult Get(int id)
         {
-            return Ok(playerRepository.Get(id));
+            return Json(playerRepository.Get(id));
         }
 
         /// <summary>
@@ -60,13 +61,32 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Add New Player")]
-        [ResponseType(typeof(void))]
-        public void Post([FromBody]Player player)
+        [ResponseType(typeof(Player))]
+        public IHttpActionResult Post([FromBody]Player player)
         {
+            var result = new Player();
+
             if (ModelState.IsValid)
             {
-                playerRepository.Add(player);
+                if (player.Club == null)
+                {
+                    return Content(HttpStatusCode.BadRequest, "Club is empty");
+                }
+
+                if (player.Country == null)
+                {
+                    return Content(HttpStatusCode.BadRequest, "Country is empty");
+                }
+
+                if (player.Gender == null)
+                {
+                    return Content(HttpStatusCode.BadRequest, "Gender is empty");
+                }
+                
+                result = playerRepository.Add(player);
             }
+
+            return Json(result);
         }
 
         /// <summary>
@@ -74,13 +94,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Edit Player")]
-        [ResponseType(typeof(void))]
-        public void Put([FromBody]Player player)
+        [ResponseType(typeof(Player))]
+        public IHttpActionResult Put([FromBody]Player player)
         {
+            var result = new Player();
+            
             if (ModelState.IsValid)
             {
-                playerRepository.Update(player);
+                result = playerRepository.Update(player);
             }
+
+            return Json(result);
         }
 
         /// <summary>

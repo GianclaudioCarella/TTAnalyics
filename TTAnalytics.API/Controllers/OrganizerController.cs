@@ -1,9 +1,5 @@
 ﻿using Swashbuckle.Swagger.Annotations;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TTAnalytics.Data;
@@ -46,7 +42,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(ICollection<Organizer>))]
         public IHttpActionResult Get()
         {
-            return Ok(organizerRepository.GetAll());
+            return Json(organizerRepository.GetAll());
         }
 
         /// <summary>
@@ -57,7 +53,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(Organizer))]
         public IHttpActionResult Get(int id)
         {
-            return Ok(organizerRepository.Get(id));
+            return Json(organizerRepository.Get(id));
         }
 
         /// <summary>
@@ -65,13 +61,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Add New Organizer")]
-        [ResponseType(typeof(void))]
-        public void Post([FromBody]Organizer organizer)
+        [ResponseType(typeof(Organizer))]
+        public IHttpActionResult Post([FromBody]Organizer organizer)
         {
+            var result = new Organizer();
+
             if (ModelState.IsValid)
             {
-                organizerRepository.Add(organizer);
+                result = organizerRepository.Add(organizer);
             }
+
+            return Json(result);
         }
 
         /// <summary>
@@ -79,13 +79,17 @@ namespace TTAnalytics.API.Controllers
         /// </summary>
         /// <returns></returns>
         [SwaggerOperation("Edit Organizer")]
-        [ResponseType(typeof(void))]
-        public void Put([FromBody]Organizer organizer)
+        [ResponseType(typeof(Organizer))]
+        public IHttpActionResult Put([FromBody]Organizer organizer)
         {
+            var result = new Organizer();
+
             if (ModelState.IsValid)
             {
-                organizerRepository.Update(organizer);
+                result = organizerRepository.Update(organizer);
             }
+
+            return Json(result);
         }
 
         /// <summary>

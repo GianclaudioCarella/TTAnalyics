@@ -41,7 +41,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(ICollection<State>))]
         public IHttpActionResult Get()
         {
-            return Ok(stateRepository.GetAll());
+            return Json(stateRepository.GetAll());
         }
     }
 }

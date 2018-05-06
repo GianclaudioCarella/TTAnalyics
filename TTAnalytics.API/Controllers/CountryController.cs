@@ -42,7 +42,18 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(ICollection<Country>))]
         public IHttpActionResult Get()
         {
-            return Ok(countryRepository.GetAll());
+            return Json(countryRepository.GetAll());
+        }
+
+        /// <summary>
+        /// Get a Specific Country
+        /// </summary>
+        /// <returns></returns>
+        [SwaggerOperation("Get a Specific Country")]
+        [ResponseType(typeof(Country))]
+        public IHttpActionResult Get(int id)
+        {
+            return Json(countryRepository.Get(id));
         }
     }
 }

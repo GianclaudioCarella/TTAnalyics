@@ -42,7 +42,7 @@ namespace TTAnalytics.API.Controllers
         [ResponseType(typeof(ICollection<Gender>))]
         public IHttpActionResult Get()
         {
-            return Ok(genderRepository.GetAll());
+            return Json(genderRepository.GetAll());
         }
     }
 }
