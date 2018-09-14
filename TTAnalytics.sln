@@ -20,7 +20,26 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTAnalytics.RepositoryInter
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTAnalytics.Repository", "TTAnalytics.Repository\TTAnalytics.Repository.csproj", "{1EA75C7F-659A-4342-9283-7DE73B7BA7CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTAnalytics.Web", "TTAnalytics.Web\TTAnalytics.Web.csproj", "{5D1F98EE-37CC-4394-86BD-F272B2EE3989}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TTAnalytics", "TTAnalytics\", "{FA17FCB8-1572-4943-A2C6-BC8E3846EE4B}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_51255"
+		Debug.AspNetCompiler.PhysicalPath = "TTAnalytics\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51255\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_51255"
+		Release.AspNetCompiler.PhysicalPath = "TTAnalytics\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51255\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "51255"
+		SlnRelativePath = "TTAnalytics\"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,10 +67,10 @@ Global
 		{1EA75C7F-659A-4342-9283-7DE73B7BA7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EA75C7F-659A-4342-9283-7DE73B7BA7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EA75C7F-659A-4342-9283-7DE73B7BA7CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D1F98EE-37CC-4394-86BD-F272B2EE3989}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D1F98EE-37CC-4394-86BD-F272B2EE3989}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D1F98EE-37CC-4394-86BD-F272B2EE3989}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D1F98EE-37CC-4394-86BD-F272B2EE3989}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA17FCB8-1572-4943-A2C6-BC8E3846EE4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA17FCB8-1572-4943-A2C6-BC8E3846EE4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA17FCB8-1572-4943-A2C6-BC8E3846EE4B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA17FCB8-1572-4943-A2C6-BC8E3846EE4B}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -47,9 +47,12 @@
     <Compile Include="IGenderRepository.cs" />
     <Compile Include="IGripRepository.cs" />
     <Compile Include="IHandednessRepository.cs" />
+    <Compile Include="IMatchRepository.cs" />
     <Compile Include="IOrganizerRepository.cs" />
     <Compile Include="IPlayerRepository.cs" />
     <Compile Include="IPlayingStyleRepository.cs" />
+    <Compile Include="IRoundRepository.cs" />
+    <Compile Include="ISponsorRepository.cs" />
     <Compile Include="IStateRepository.cs" />
     <Compile Include="ITournamentRepository.cs" />
     <Compile Include="IUserRepository.cs" />

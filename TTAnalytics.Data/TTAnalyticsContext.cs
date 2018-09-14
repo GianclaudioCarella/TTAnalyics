@@ -29,6 +29,19 @@ namespace TTAnalytics.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<TournamentCategories>()
+                .HasKey(t => new { t.TournamentId, t.CategoryId });
+
+            modelBuilder.Entity<Tournament>()
+                .HasMany(t => t.Categories)
+                .WithMany(t => t.Tournaments)
+                .Map(t =>
+                {
+                    t.MapLeftKey("TournamentId");
+                    t.MapRightKey("CategoryId");
+                    t.ToTable("TournamentCategories");
+                });
         }
     }
 }
